@@ -1,6 +1,7 @@
 extends PathFollow2D
 
 @export var speed = 125
+@export var playerDamage = 1
 #built in function to call and object to move 60 times a second
 func _physics_process(delta: float) -> void:
 	move(delta)
@@ -11,4 +12,10 @@ func move(delta: float) -> void:
 	
 	#checks if enemy has reached end of path. 0.0 at start, 1.0 at end
 	if progress_ratio >= 1.0:
+		reachedEnd()
+		
+func reachedEnd() -> void:
+	GameManager.livesLost(playerDamage)
+	
+	queue_free()
 	queue_free()
