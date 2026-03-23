@@ -8,6 +8,7 @@ var lives = 20
 func _ready() -> void:
 	# Emit the initial value so UI can update
 	livesChanged.emit(lives)
+
 func livesLost(amount: int) -> void:
 	lives -= amount
 	livesChanged.emit(lives)
