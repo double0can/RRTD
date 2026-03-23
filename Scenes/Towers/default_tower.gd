@@ -1,8 +1,11 @@
 extends Node2D
 
+@export var bulletScene: PackedScene
+
 var inRange: Array = []
 var currentTarget: Node2D = null
 
+@onready var firePoint: Marker2D = $weaponSprite/firePoint
 func _process(delta: float) -> void:
 	update_target()
 	
@@ -34,3 +37,16 @@ func _on_range_area_exited(body: Node2D) -> void:
 		#if enemy exiting was  target clear target
 		if body == currentTarget:
 			currentTarget = null
+
+
+func _on_fire_rate_timeout() -> void:
+	if currentTarget != null and is_instance_valid(currentTarget):
+		shoot()
+
+func shoot() -> void:
+	if bulletScene:
+		var newBullet = bulletScene.instantiate()
+		
+		get_tree().current_scene.add_child(newBullet)
+		newBullet.global_position = firePoint.global_position
+		newBullet.global_rotation = weaponSprite.global_rotation
