@@ -1,0 +1,31 @@
+[gd_scene load_steps=6 format=3 uid="uid://ct3h6kcm1gyr3"]
+
+[ext_resource type="Script" uid="uid://hm54tw8h516j" path="res://hud.gd" id="1_jg6e1"]
+[ext_resource type="Texture2D" uid="uid://djigo1dml81y7" path="res://Assets/Towers/raccoon.png" id="2_mdu8u"]
+[ext_resource type="Script" uid="uid://b43vx8cul31wu" path="res://Scenes/HUD/towerShopButton.gd" id="3_eqxii"]
+[ext_resource type="Script" uid="uid://cmhd65l0t78mn" path="res://Scenes/HUD/shopToggleButton.gd" id="3_etpdp"]
+[ext_resource type="PackedScene" uid="uid://7i3jv72difew" path="res://Scenes/Towers/default_tower.tscn" id="4_7nfgj"]
+
+[node name="HUD" type="CanvasLayer"]
+script = ExtResource("1_jg6e1")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -40.0
+offset_bottom = 40.0
+grow_horizontal = 0
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+
+[node name="LivesUI" type="Label" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0, 0, 1)
+theme_override_constants/outline_size = 9
+theme_override_font_sizes/font_size = 40
