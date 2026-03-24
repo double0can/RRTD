@@ -7,6 +7,9 @@ var currentTarget: Node2D = null
 
 @onready var weaponSprite: Sprite2D = $weaponSprite
 @onready var firePoint: Marker2D = $weaponSprite/firePoint
+@onready var tower1: Sprite2D = $Tower1
+
+
 
 func _process(delta: float) -> void:
 	update_target()
@@ -14,6 +17,15 @@ func _process(delta: float) -> void:
 	if currentTarget:
 		weaponSprite.look_at(currentTarget.global_position)
 		
+		if currentTarget.global_position.x < global_position.x:
+			tower1.flip_h = true #flips raccoon to look left
+			weaponSprite.flip_v = true #flips gun vertically so it isnt upside down
+			
+		else:
+			#keeps sprites in deafualt facing position
+			tower1.flip_h = false
+			weaponSprite.flip_v = false
+
 func update_target():
 	#check if it target is still valid (not dead/despawned)
 	if currentTarget != null:
