@@ -5,7 +5,9 @@ extends Node2D
 var inRange: Array = []
 var currentTarget: Node2D = null
 
+@onready var weaponSprite: Sprite2D = $weaponSprite
 @onready var firePoint: Marker2D = $weaponSprite/firePoint
+
 func _process(delta: float) -> void:
 	update_target()
 	
